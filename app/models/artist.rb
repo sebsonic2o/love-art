@@ -1,0 +1,2 @@
+class Artist < Lover
+end
