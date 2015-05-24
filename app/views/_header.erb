@@ -8,10 +8,11 @@
           <li><a href="">My Artwork</a></li>
         <% end %>
         <li><img src="<%= current_lover.image_url %>"></li>
-        <li><a href="/logout"><%= current_lover.alias %></a></li>
+        <li><a href="/lovers/<%= current_lover.id %>/edit"><%= current_lover.alias %></a></li>
+        <li><a href="/lovers/logout">Sign Out</a></li>
       <% else %>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
+        <li><a href="/lovers/login">Sign In</a></li>
+        <li><a href="/lovers/new">Sign Up</a></li>
       <% end %>
     </ul>
   </header>
