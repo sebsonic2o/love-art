@@ -8,7 +8,7 @@ end
 
 get '/show' do
   if current_artist.nil?
-    erb :'artists/new'
+    erb :'login'
   end
 end
 
@@ -18,6 +18,18 @@ end
 
 get '/login' do
   erb :login
+end
+
+post '/login' do
+  lover = Lover.find_by(alias: params[:alias])
+
+  if !lover.nil?
+    if lover.password == params[:password]
+      session[:user_id] = lover.id
+    end
+  end
+
+  redirect '/'
 end
 
 get '/logout' do
