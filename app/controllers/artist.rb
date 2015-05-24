@@ -18,8 +18,7 @@ post '/artists' do
 end
 
 get '/artists/:artist_id' do
-  p params[:artist_id]
-  p current_artist.id
+
   if current_artist.id.to_s == params[:artist_id]
     @home = true
   else

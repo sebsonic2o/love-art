@@ -8,12 +8,26 @@ end
 
 get '/show' do
   if current_artist.nil?
-    erb :'login'
+    erb :login
+  else
+    redirect '/'
   end
 end
 
 get '/love' do
   "Hello love!"
+end
+
+get '/register' do
+  erb :register
+end
+
+post '/register' do
+  if params[:artist].nil?
+    post '/lovers', params
+  else
+    post '/artists', params
+  end
 end
 
 get '/login' do

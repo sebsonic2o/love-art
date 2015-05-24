@@ -1,6 +1,8 @@
 <section class='sign'>
-  <h3>Please register as an artist</h3>
-  <form action='/artists' method='post'>
+  <h3>Please register</h3>
+  <form action='/register' method='post'>
+    <label for="artist">Artist</label>
+    <input type='checkbox' name='artist' checked>
     <input type='text' name='alias' placeholder='Your alias...'>
     <input type='email' name='email' placeholder='Your email...'>
     <input type='password' name='password' placeholder='Your password...'>
@@ -10,5 +12,8 @@
     <textarea name='bio' placeholder='Your bio...'></textarea>
     <input type='url' name='website_url' placeholder='Your website url...'>
     <input type='submit' value='Register'>
+  </form>
+  <form  class='option' action='/login' method='get'>
+    <input type='submit' value='Login'>
   </form>
 </section>

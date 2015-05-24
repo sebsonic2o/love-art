@@ -20,6 +20,11 @@
   padding: 0px 20px 20px 20px;
 }
 
+.sign label {
+  float: left;
+  margin-right: 10px;
+}
+
 .sign input {
   display: block;
   margin-top: 20px;
@@ -30,6 +35,9 @@
   margin-top: 20px;
 }
 
+.sign .option {
+  color: green;
+}
 header {
   top: 0px;
   position: fixed;
