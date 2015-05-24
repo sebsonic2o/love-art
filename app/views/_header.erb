@@ -1,0 +1,18 @@
+<div class="spacePooper">
+  <header>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="">Browse Art</a></li>
+      <% if logged_in? %>
+        <% if !current_artist.nil? %>
+          <li><a href="">My Artwork</a></li>
+        <% end %>
+        <li><img src="<%= current_lover.image_url %>"></li>
+        <li><a href="/logout"><%= current_lover.alias %></a></li>
+      <% else %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      <% end %>
+    </ul>
+  </header>
+</div>
