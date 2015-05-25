@@ -3,7 +3,7 @@
     <a href="/artworks/new" >[Add]</a>
   <% else %>
     <% if @selected_artist.nil? %>
-      <a href="/artworks" >[Next]</a>
+      <a href="/artworks?random=true" >[Next]</a>
     <% else %>
       <a href="/lovers/<%= @selected_artist.id %>"><%= @selected_artist.alias %></a>
     <% end %>

@@ -2,15 +2,23 @@ get '/artworks' do
   @home = false
   @selected_artist = nil
 
-  if current_artist.nil?
-    @artworks = Artwork.all
-    # @artworks = Artwork.limit(10).order("RANDOM()")
+  if session[:artwork_ids] && !params[:random]
+    @artworks = Artwork.find(session[:artwork_ids])
   else
-    @artworks = Artwork.where("artist_id <> ?", current_artist.id)
-    # @artworks = Artwork.where("artist_id <> ?", current_artist.id).limit(10).order("RANDOM()")
+    session.delete(:artwork_ids)
+
+    if current_artist.nil?
+      # @artworks = Artwork.all
+      @artworks = Artwork.limit(10).order("RANDOM()")
+    else
+      # @artworks = Artwork.where("artist_id <> ?", current_artist.id)
+      @artworks = Artwork.where("artist_id <> ?", current_artist.id).limit(10).order("RANDOM()")
+    end
   end
 
+  session[:artwork_ids] = @artworks.map {|artwork| artwork.id}
   session[:return_to] = request.path_info
+
   erb :'artworks/index'
 end
 
