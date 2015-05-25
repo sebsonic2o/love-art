@@ -2,7 +2,7 @@ get '/artworks' do
   @home = false
   @selected_artist = nil
 
-  if session[:artwork_ids] && params[:random]
+  if session[:artwork_ids] && !params.fetch(:random, false)
     @artworks = Artwork.find(session[:artwork_ids])
   else
     session.delete(:artwork_ids)
@@ -14,9 +14,10 @@ get '/artworks' do
       # @artworks = Artwork.where("artist_id <> ?", current_artist.id)
       @artworks = Artwork.where("artist_id <> ?", current_artist.id).limit(10).order("RANDOM()")
     end
+
+    session[:artwork_ids] = @artworks.map {|artwork| artwork.id}
   end
 
-  session[:artwork_ids] = @artworks.map {|artwork| artwork.id}
   session[:return_to] = request.path_info
 
   erb :'artworks/index'
@@ -111,7 +112,6 @@ get '/artists/:artist_id/artworks' do
 
   @artworks = @selected_artist.artworks
 
-  # session[:return_to] = "/artists/#{params[:artist_id]}/artworks"
   session[:return_to] = request.path_info
   erb :'artworks/index'
 end
