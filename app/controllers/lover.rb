@@ -16,6 +16,7 @@ end
 
 get '/lovers/logout' do
   session[:user_id] = nil
+  # session[:artwork_ids] = nil
 
   redirect '/'
 end

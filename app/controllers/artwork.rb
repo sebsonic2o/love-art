@@ -2,7 +2,7 @@ get '/artworks' do
   @home = false
   @selected_artist = nil
 
-  if session[:artwork_ids] && !params[:random]
+  if session[:artwork_ids] && params[:random]
     @artworks = Artwork.find(session[:artwork_ids])
   else
     session.delete(:artwork_ids)
