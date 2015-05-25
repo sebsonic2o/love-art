@@ -1,0 +1,15 @@
+require 'spec_helper'
+
+describe Designation do
+
+  it "can run tests" do
+    expect(true).to eq(true)
+  end
+
+  it "can see the database" do
+    expect(Designation.all.length).to be >= (0)
+  end
+
+  it {should validate_presence_of(:artwork)}
+  it {should validate_presence_of(:category)}
+end
