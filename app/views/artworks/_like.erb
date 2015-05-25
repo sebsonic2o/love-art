@@ -1,0 +1,17 @@
+<p>Likes: <%= artwork.likes.count %></p>
+<% if !home %>
+  <% if !logged_in? %>
+    <form action='/lovers/login' method='get'>
+      <input type='submit' value='Like'>
+    </form>
+  <% elsif artwork.likes.find_by(lover_id: current_lover.id) %>
+    <form action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <input type='hidden' name='_method' value='delete'>
+      <input type='submit' value='Unlike'>
+    </form>
+  <% else %>
+    <form action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <input type='submit' value='Like'>
+    </form>
+  <% end %>
+<% end %>
