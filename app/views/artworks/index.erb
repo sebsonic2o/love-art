@@ -1,16 +1,37 @@
-<% if @home %>
-  <a href="/artworks/new" >[Add]</a>
-<% else %>
-  <% if @browse %>
-    <a href="/artworks" >[Next]</a>
+<div class='prime'>
+  <% if @home %>
+    <a href="/artworks/new" >[Add]</a>
+  <% else %>
+    <% if @selected_artist.nil? %>
+      <a href="/artworks" >[Next]</a>
+    <% else %>
+      <a href="/lovers/<%= @selected_artist.id %>"><%= @selected_artist.alias %></a>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 <% @artworks.each do |artwork| %>
   <section class='artwork'>
     <a href="/artworks/<%= artwork.id %>"><img src="<%= artwork.image_url %>"></a>
     <p><%= artwork.title %></p>
-    <% if !@home && @browse %>
+    <% if !@home && @selected_artist.nil? %>
       <p>By <a href="/lovers/<%= artwork.artist.id %>"><%= artwork.artist.alias %></a>
+    <% end %>
+    <p>Likes: <%= artwork.likes.count %></p>
+    <% if !@home %>
+      <% if !logged_in? %>
+        <form action='/lovers/login' method='get'>
+          <input type='submit' value='Like'>
+        </form>
+      <% elsif artwork.likes.find_by(lover_id: current_lover.id) %>
+        <form action='/artworks/<%= artwork.id %>/likes' method='post'>
+          <input type='hidden' name='_method' value='delete'>
+          <input type='submit' value='Unlike'>
+        </form>
+      <% else %>
+        <form action='/artworks/<%= artwork.id %>/likes' method='post'>
+          <input type='submit' value='Like'>
+        </form>
+      <% end %>
     <% end %>
   </section>
 <% end %>

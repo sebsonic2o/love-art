@@ -1,8 +1,16 @@
 get '/artworks' do
   @home = false
-  @browse = true
-  @artworks = Artwork.all
+  @selected_artist = nil
 
+  if current_artist.nil?
+    @artworks = Artwork.all
+    # @artworks = Artwork.limit(10).order("RANDOM()")
+  else
+    @artworks = Artwork.where("artist_id <> ?", current_artist.id)
+    # @artworks = Artwork.where("artist_id <> ?", current_artist.id).limit(10).order("RANDOM()")
+  end
+
+  session[:return_to] = request.path_info
   erb :'artworks/index'
 end
 
@@ -35,6 +43,7 @@ get '/artworks/:artwork_id' do
     @home = true
   end
 
+  session[:return_to] = request.path_info
   erb :'artworks/show'
 end
 
@@ -86,13 +95,15 @@ end
 get '/artists/:artist_id/artworks' do
   if session[:user_id].to_s == params[:artist_id]
     @home = true
-    artist = current_artist
+    @selected_artist = current_artist
   else
     @home = false
-    artist = Artist.find(params[:artist_id])
+    @selected_artist = Artist.find(params[:artist_id])
   end
 
-  @artworks = artist.artworks
+  @artworks = @selected_artist.artworks
 
+  # session[:return_to] = "/artists/#{params[:artist_id]}/artworks"
+  session[:return_to] = request.path_info
   erb :'artworks/index'
 end

@@ -62,7 +62,7 @@ get '/lovers/:lover_id' do
     @lover = current_lover
     @home = true
   else
-    @lover = Lover.find_by_id(params[:lover_id])
+    @lover = Lover.find_by(id: params[:lover_id])
     redirect '/' if @lover.nil?
     @home = false
   end

@@ -90,6 +90,7 @@ header img {
 }
 
 .artwork {
+  float: left;
   width: 300px;
   margin-left: 50px;
   margin-top: 20px;
@@ -103,4 +104,8 @@ header img {
 .profile {
   margin-left: 50px;
   margin-top: 20px;
+}
+
+.prime {
+  display: block;
 }

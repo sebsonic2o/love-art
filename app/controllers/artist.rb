@@ -4,7 +4,7 @@ get '/artists/:artist_id' do
     @artist = current_artist
     @home = true
   else
-    @artist = Artist.find_by_id(params[:artist_id])
+    @artist = Artist.find_by(id: params[:artist_id])
     redirect '/' if @artist.nil?
     @home = false
   end
