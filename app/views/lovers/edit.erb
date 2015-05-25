@@ -1,0 +1,14 @@
+<section class='sign'>
+  <h3>Edit Profile</h3>
+  <form action='/lovers/<%= @lover.id %>' method='post'>
+    <input type='hidden' name='_method' value='put'>
+    <input type='text' name='alias' value='<%= @lover.alias %>'>
+    <input type='email' name='email' value='<%= @lover.email %>'>
+    <input type='text' name='first_name' value='<%= @lover.first_name %>'>
+    <input type='text' name='last_name' value='<%= @lover.last_name %>'>
+    <input type='url' name='image_url' value='<%= @lover.image_url %>'>
+    <textarea name='bio'><%= @lover.bio %></textarea>
+    <input type='url' name='website_url' value='<%= @lover.website_url %>'>
+    <input type='submit' value='Edit'>
+  </form>
+</section>

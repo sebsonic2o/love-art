@@ -1,0 +1,11 @@
+<section class='sign'>
+  <h3>Edit Artwork</h3>
+  <form action='/artworks/<%= @artwork.id %>' method='post'>
+    <input type='hidden' name='_method' value='put'>
+    <input type='text' name='title' value='<%= @artwork.title %>'>
+    <textarea name='description'><%= @artwork.description %></textarea>
+    <input type='url' name='image_url' value='<%= @artwork.image_url %>'>
+    <input type='date' name='date' value='<%= @artwork.date %>'>
+    <input type='submit' value='Edit'>
+  </form>
+</section>

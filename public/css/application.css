@@ -88,3 +88,19 @@ header img {
 .spacePooper {
   padding-top: 50px;
 }
+
+.artwork {
+  width: 300px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.artwork img {
+  width: 250px;
+  height: 250px;
+}
+
+.profile {
+  margin-left: 50px;
+  margin-top: 20px;
+}

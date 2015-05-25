@@ -2,13 +2,13 @@
   <header>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="">Browse Art</a></li>
+      <li><a href="/artworks">Browse Art</a></li>
       <% if logged_in? %>
         <% if !current_artist.nil? %>
-          <li><a href="">My Artwork</a></li>
+          <li><a href="/artists/<%= current_artist.id %>/artworks">My Artwork</a></li>
         <% end %>
         <li><img src="<%= current_lover.image_url %>"></li>
-        <li><a href="/lovers/<%= current_lover.id %>/edit"><%= current_lover.alias %></a></li>
+        <li><a href="/lovers/<%= current_lover.id %>"><%= current_lover.alias %></a></li>
         <li><a href="/lovers/logout">Sign Out</a></li>
       <% else %>
         <li><a href="/lovers/login">Sign In</a></li>

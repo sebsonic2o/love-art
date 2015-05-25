@@ -3,9 +3,9 @@ get '/' do
     erb :index
   else
     if current_artist.nil?
-      redirect "/lovers/#{current_lover.id}"
+      redirect '/artworks'
     else
-      redirect "/artists/#{current_artist.id}"
+      redirect "/artists/#{current_artist.id}/artworks"
     end
   end
 end
@@ -19,6 +19,6 @@ get '/show' do
 end
 
 get '/love' do
-  "Hello love!"
+  redirect '/artworks'
 end
 

@@ -1,0 +1,12 @@
+<% if @home %>
+  <a href="/artists/<%= @artist.id %>/edit" >[Edit]</a>
+<% end %>
+<section class='profile'>
+  <img src="<%= @artist.image_url %>">
+  <h3><%= @artist.alias %></h3>
+  <p><%= @artist.first_name %> <%= @artist.last_name %></p>
+  <p><a href="/artists/<%= @artist.id %>/artworks">See Artwork</a></p>
+  <p><a href="mailto:<%= @artist.email %>"><%= @artist.email %></a></p>
+  <p><a href="<%= @artist.website_url %>"></a></p>
+  <p><%= @artist.bio %></p>
+</section>

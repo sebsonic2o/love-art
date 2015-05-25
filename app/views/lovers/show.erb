@@ -1,5 +1,14 @@
 <% if @home %>
-  <p>I am <%= current_lover.alias %>!</p>
-<% else %>
-  <p>I am on an another lover home page!</p>
+  <a href="/lovers/<%= @lover.id %>/edit" >[Edit]</a>
 <% end %>
+<section class='profile'>
+  <img src="<%= @lover.image_url %>">
+  <h3><%= @lover.alias %></h3>
+  <p><%= @lover.first_name %> <%= @lover.last_name %></p>
+  <% unless @home || @lover.type.nil? %>
+    <p><a href="/artists/<%= @lover.id %>/artworks">See Artwork</a></p>
+  <% end %>
+  <p><a href="mailto:<%= @lover.email %>"><%= @lover.email %></a></p>
+  <p><a href="<%= @lover.website_url %>"></a></p>
+  <p><%= @lover.bio %></p>
+</section>

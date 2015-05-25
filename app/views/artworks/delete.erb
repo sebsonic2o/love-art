@@ -1,0 +1,10 @@
+<section class='sign'>
+  <h3>Remove "<%= @artwork.title %>"... Are you sure?</h3>
+  <section class='artwork'><img src="<%= @artwork.image_url %>">
+  <form action='/artworks/<%= @artwork.id %>' method='post'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='submit' value='Remove'>
+  </form>
+  <p><a href="/artworks/<%= @artwork.id %>">Cancel</a></p>
+  </section>
+</section>

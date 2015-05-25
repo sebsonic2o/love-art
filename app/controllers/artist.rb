@@ -1,12 +1,13 @@
 get '/artists/:artist_id' do
 
-  if current_artist.id.to_s == params[:artist_id]
+  if !current_artist.nil? && current_artist.id.to_s == params[:artist_id]
+    @artist = current_artist
     @home = true
   else
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.find_by_id(params[:artist_id])
     redirect '/' if @artist.nil?
     @home = false
   end
 
-  erb :'lovers/artists/show'
+  erb :'artists/show'
 end

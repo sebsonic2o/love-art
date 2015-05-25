@@ -58,13 +58,43 @@ end
 
 get '/lovers/:lover_id' do
 
-  if current_lover.id.to_s == params[:lover_id]
+  if session[:user_id].to_s == params[:lover_id]
+    @lover = current_lover
     @home = true
   else
-    @lover = Lover.find(params[:lover_id])
+    @lover = Lover.find_by_id(params[:lover_id])
     redirect '/' if @lover.nil?
     @home = false
   end
 
   erb :'lovers/show'
 end
+
+get '/lovers/:lover_id/edit' do
+  @lover = Lover.find(params[:lover_id])
+
+  if @lover == current_lover
+    erb :'lovers/edit'
+  else
+    redirect '/'
+  end
+end
+
+put '/lovers/:lover_id' do
+  lover = Lover.find(params[:lover_id])
+
+  if lover == current_lover
+    lover.update_attributes!(
+      alias: params[:alias],
+      email: params[:email],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      image_url: params[:image_url],
+      bio: params[:bio],
+      website_url: params[:website_url]
+      )
+  end
+
+  redirect '/'
+end
+

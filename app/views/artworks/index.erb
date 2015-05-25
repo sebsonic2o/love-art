@@ -1,0 +1,16 @@
+<% if @home %>
+  <a href="/artworks/new" >[Add]</a>
+<% else %>
+  <% if @browse %>
+    <a href="/artworks" >[Next]</a>
+  <% end %>
+<% end %>
+<% @artworks.each do |artwork| %>
+  <section class='artwork'>
+    <a href="/artworks/<%= artwork.id %>"><img src="<%= artwork.image_url %>"></a>
+    <p><%= artwork.title %></p>
+    <% if !@home && @browse %>
+      <p>By <a href="/lovers/<%= artwork.artist.id %>"><%= artwork.artist.alias %></a>
+    <% end %>
+  </section>
+<% end %>

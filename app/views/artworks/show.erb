@@ -1,0 +1,13 @@
+<% if @home %>
+  <a href="/artworks/<%= @artwork.id %>/edit" >[Edit]</a>
+  <a href="/artworks/<%= @artwork.id %>/delete" >[Delete]</a>
+<% end %>
+<section class='artwork'>
+  <a href="/artworks/<%= @artwork.id %>"><img src="<%= @artwork.image_url %>"></a>
+  <p><%= @artwork.title %></p>
+  <p><%= @artwork.date %></p>
+  <% if !@home %>
+    <a href="/artists/<%= @artwork.artist.id %>/artworks"><%= @artwork.artist.alias %></a>
+  <% end %>
+  <p><%= @artwork.description %></p>
+</section>
