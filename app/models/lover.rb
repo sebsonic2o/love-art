@@ -3,6 +3,9 @@ require 'bcrypt'
 class Lover < ActiveRecord::Base
   include BCrypt
 
+  validates :alias, :email, uniqueness: true, presence: true
+  validates :password_hash, presence: true
+
   has_many :likes, dependent: :destroy
   has_many :liked_artworks, through: :likes, source: :artwork
 
