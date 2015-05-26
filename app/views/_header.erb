@@ -2,7 +2,7 @@
   <header>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/artworks?random=true">Browse Art</a></li>
+      <li><a href="/artworks?show=random">Browse Art</a></li>
       <% if logged_in? %>
         <% if !current_artist.nil? %>
           <li><a href="/artists/<%= current_artist.id %>/artworks">My Artwork</a></li>

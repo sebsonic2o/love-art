@@ -2,11 +2,13 @@ get '/artworks' do
   @home = false
   @selected_artist = nil
 
-  if session[:artwork_ids] && !params.fetch(:random, false)
-    @artworks = Artwork.find(session[:artwork_ids])
-  else
-    session.delete(:artwork_ids)
+  if params[:show] != 'random' && session[:artwork_ids]
+    @artworks = []
+    session[:artwork_ids].each do |id|
+      @artworks.push(Artwork.find(id))
+    end
 
+  else
     if current_artist.nil?
       # @artworks = Artwork.all
       @artworks = Artwork.limit(10).order("RANDOM()")
