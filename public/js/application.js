@@ -12,18 +12,22 @@ $(document).ready(function() {
   $('.like-form').on('click', function(event) {
     event.preventDefault();
 
-    $.ajax({
+    var request = $.ajax({
       method: 'POST',
       url: $(this).attr('action'),
       context: $(this)
-    }).done(function(data) {
+    });
+
+    request.done(function(data) {
       console.log("SUCCESS"); // logging
 
       changeLikes($(this), data['likes']);
       $(this).hide();
       $(this).prev().show();
 
-    }).fail(function() {
+    });
+
+    request.fail(function() {
       console.log("FAIL"); // logging
     });
   });
@@ -32,19 +36,22 @@ $(document).ready(function() {
   $('.unlike-form').on('click', function(event) {
     event.preventDefault();
 
-    $.ajax({
+    var request = $.ajax({
       method: 'DELETE',
       url: $(this).attr('action'),
       context: $(this)
-    }).done(function(data) {
-      console.log("SUCCESS"); // logging
+    });
+
+    request.done(function(data) {
+      console.log('SUCCESS'); // logging
 
       changeLikes($(this), data['likes']);
       $(this).hide();
       $(this).next().show();
+    });
 
-    }).fail(function() {
-      console.log("FAIL"); // logging
+    request.fail(function(response) {
+      console.log('FAIL'); // logging
     });
   });
 
