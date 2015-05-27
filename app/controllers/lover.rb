@@ -5,7 +5,7 @@ end
 post '/lovers/login' do
   lover = Lover.find_by(alias: params[:alias])
 
-  session[:artwork_ids] = nil
+  # session[:artwork_ids] = nil
 
   if !lover.nil?
     if lover.password == params[:password]
@@ -18,7 +18,7 @@ end
 
 get '/lovers/logout' do
   session[:user_id] = nil
-  session[:artwork_ids] = nil
+  # session[:artwork_ids] = nil
 
   redirect '/'
 end
@@ -55,7 +55,7 @@ post '/lovers' do
   lover.save!
 
   session[:user_id] = lover.id
-  session[:artwork_ids] = nil
+  # session[:artwork_ids] = nil
 
   redirect '/'
 end
