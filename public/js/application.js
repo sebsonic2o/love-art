@@ -8,7 +8,6 @@ var changeLikes = function(selector, value) {
 
 $(document).ready(function() {
 
-
   // Like Event Listener
   $('.like-form').on('click', function(event) {
     event.preventDefault();
