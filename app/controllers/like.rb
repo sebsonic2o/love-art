@@ -6,8 +6,8 @@ post '/artworks/:artwork_id/likes' do
     current_lover.save!
   end
 
-
-  redirect session[:return_to]
+  content_type :json
+  {likes: artwork.likes.count}.to_json
 end
 
 delete '/artworks/:artwork_id/likes' do
@@ -18,5 +18,6 @@ delete '/artworks/:artwork_id/likes' do
     current_lover.save!
   end
 
-  redirect session[:return_to]
+  content_type :json
+  {likes: artwork.likes.count}.to_json
 end

@@ -114,3 +114,7 @@ header img {
 .prime {
   display: block;
 }
+
+.inactive {
+  display: none;
+}
