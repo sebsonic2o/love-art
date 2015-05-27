@@ -1,17 +1,27 @@
-<p>Likes: <span><%= artwork.likes.count %></span></p>
-<% if !home %>
-  <% if !logged_in? %>
-    <form action='/lovers/login' method='get'>
-      <input type='submit' value='Like'>
-    </form>
-  <% elsif artwork.likes.find_by(lover_id: current_lover.id) %>
-    <form class='unlike' action='/artworks/<%= artwork.id %>/likes' method='post'>
-      <input type='hidden' name='_method' value='delete'>
-      <input type='submit' value='Unlike'>
-    </form>
-  <% else %>
-    <form class='like' action='/artworks/<%= artwork.id %>/likes' method='post'>
-      <input type='submit' value='Like'>
-    </form>
+<div>
+  <p>Likes: <span><%= artwork.likes.count %></span></p>
+  <% if !home %>
+    <% if !logged_in? %>
+      <form action='/lovers/login' method='get'>
+        <input type='submit' value='Like'>
+      </form>
+    <% else %>
+      <% like = artwork.likes.find_by(lover_id: current_lover.id) %>
+      <% if like %>
+        <form class='unlike-form' action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <% else %>
+        <form class='unlike-form inactive' action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <% end %>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Unlike'>
+      </form>
+      <% if like %>
+        <form class='like-form inactive' action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <% else %>
+        <form class='like-form' action='/artworks/<%= artwork.id %>/likes' method='post'>
+      <% end %>
+        <input type='submit' value='Like'>
+      </form>
+    <% end %>
   <% end %>
-<% end %>
+</div>

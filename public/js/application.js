@@ -1,5 +1,5 @@
 var changeLikes = function(selector, value) {
-  var $likes = selector.prev('p').children('span');
+  var $likes = selector.parent('div').children('p').children('span');
   $likes.hide();
   $likes.text(value);
   $likes.fadeIn("slow");
@@ -8,8 +8,9 @@ var changeLikes = function(selector, value) {
 
 $(document).ready(function() {
 
+
   // Like Event Listener
-  $('.like').on('click', function(event) {
+  $('.like-form').on('click', function(event) {
     event.preventDefault();
 
     $.ajax({
@@ -17,18 +18,19 @@ $(document).ready(function() {
       url: $(this).attr('action'),
       context: $(this)
     }).done(function(data) {
-      console.log("SUCCESS"); // temporary
+      console.log("SUCCESS"); // logging
 
       changeLikes($(this), data['likes']);
+      $(this).hide();
+      $(this).prev().show();
 
-      // replace current element (form) and children with unlike form and children
     }).fail(function() {
-      console.log("FAIL"); // temporary
+      console.log("FAIL"); // logging
     });
   });
 
   // Unlike Event Listener
-  $('.unlike').on('click', function(event) {
+  $('.unlike-form').on('click', function(event) {
     event.preventDefault();
 
     $.ajax({
@@ -36,13 +38,14 @@ $(document).ready(function() {
       url: $(this).attr('action'),
       context: $(this)
     }).done(function(data) {
-      console.log("SUCCESS"); // temporary
+      console.log("SUCCESS"); // logging
 
       changeLikes($(this), data['likes']);
+      $(this).hide();
+      $(this).next().show();
 
-      // replace current element (form) and children with unlike form and children
     }).fail(function() {
-      console.log("FAIL"); // temporary
+      console.log("FAIL"); // logging
     });
   });
 
