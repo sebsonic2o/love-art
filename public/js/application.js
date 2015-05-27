@@ -1,7 +1,49 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+var changeLikes = function(selector, value) {
+  var $likes = selector.prev('p').children('span');
+  $likes.hide();
+  $likes.text(value);
+  $likes.fadeIn("slow");
+};
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+$(document).ready(function() {
+
+  // Like Event Listener
+  $('.like').on('click', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      context: $(this)
+    }).done(function(data) {
+      console.log("SUCCESS"); // temporary
+
+      changeLikes($(this), data['likes']);
+
+      // replace current element (form) and children with unlike form and children
+    }).fail(function() {
+      console.log("FAIL"); // temporary
+    });
+  });
+
+  // Unlike Event Listener
+  $('.unlike').on('click', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'DELETE',
+      url: $(this).attr('action'),
+      context: $(this)
+    }).done(function(data) {
+      console.log("SUCCESS"); // temporary
+
+      changeLikes($(this), data['likes']);
+
+      // replace current element (form) and children with unlike form and children
+    }).fail(function() {
+      console.log("FAIL"); // temporary
+    });
+  });
+
 });
