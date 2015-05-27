@@ -18,17 +18,20 @@ $(document).ready(function() {
       context: $(this)
     });
 
-    request.done(function(data) {
-      console.log("SUCCESS"); // logging
+    request.done(function(response) {
+      // logging
+      console.log(response);
+      console.log("SUCCESS");
 
-      changeLikes($(this), data['likes']);
+      changeLikes($(this), response['likes']);
       $(this).hide();
       $(this).prev().show();
-
     });
 
     request.fail(function() {
-      console.log("FAIL"); // logging
+      // logging
+      console.log(response);
+      console.log("FAIL");
     });
   });
 
@@ -42,16 +45,20 @@ $(document).ready(function() {
       context: $(this)
     });
 
-    request.done(function(data) {
-      console.log('SUCCESS'); // logging
+    request.done(function(response) {
+      // logging
+      console.log(response);
+      console.log('SUCCESS');
 
-      changeLikes($(this), data['likes']);
+      changeLikes($(this), response['likes']);
       $(this).hide();
       $(this).next().show();
     });
 
     request.fail(function(response) {
-      console.log('FAIL'); // logging
+      // logging
+      console.log(response);
+      console.log('FAIL');
     });
   });
 
