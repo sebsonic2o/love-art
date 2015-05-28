@@ -1,3 +1,3 @@
-alias, email, first_name, last_name, image_url, bio, website_url
-leonardoD, leonardoD@vinci.com, Leonardo, D., https://europeanhistoryatloyola.wikispaces.com/file/view/leonardo_davinci.jpg/192834152/517x415/leonardo_davinci.jpg, I love chocolate!, http://en.wikipedia.org/wiki/Leonardo_da_Vinci
-claudeM, claudeM@monet.com, Claude, M., http://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/440px-Claude_Monet_1899_Nadar_crop.jpg, I hate Leonardo!, http://en.wikipedia.org/wiki/Claude_Monet
+alias,email,first_name,last_name,image_url,bio,website_url
+leonardoD,leonardoD@vinci.com,Leonardo,D.,https://europeanhistoryatloyola.wikispaces.com/file/view/leonardo_davinci.jpg/192834152/517x415/leonardo_davinci.jpg,I love chocolate!,http://en.wikipedia.org/wiki/Leonardo_da_Vinci
+claudeM,claudeM@monet.com,Claude,M.,http://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/440px-Claude_Monet_1899_Nadar_crop.jpg,I hate Leonardo!,http://en.wikipedia.org/wiki/Claude_Monet
