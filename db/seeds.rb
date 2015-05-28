@@ -58,3 +58,16 @@ end
 params_array.each do |params|
   Artwork.create!(params)
 end
+
+# Categories
+params_array = []
+
+CSV.foreach("db/category.csv", {headers: true}) do |row|
+  params_array << {
+    name: row[0]
+    }
+end
+
+params_array.each do |params|
+  Category.create!(params)
+end
