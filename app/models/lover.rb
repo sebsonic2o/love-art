@@ -6,8 +6,10 @@ class Lover < ActiveRecord::Base
   validates :alias, :email, uniqueness: true, presence: true
   validates :password_hash, presence: true
 
-  has_many :likes, dependent: :destroy
-  has_many :liked_artworks, through: :likes, source: :artwork
+  has_many :like_updates, dependent: :destroy
+  has_many :liked_artworks, through: :like_updates, source: :artwork
+
+  has_many :custom_updates, dependent: :destroy
 
   has_many :interests, dependent: :destroy
   has_many :categories, through: :interests

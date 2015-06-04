@@ -5,8 +5,10 @@ class Artwork < ActiveRecord::Base
   has_many :designations, dependent: :destroy
   has_many :categories, through: :designations
 
-  has_many :likes, dependent: :destroy
-  has_many :lovers, through: :likes
+  has_many :like_updates, dependent: :destroy
+  has_many :lovers, through: :like_updates
+
+  has_many :artwork_updates, dependent: :destroy
 
   belongs_to :artist
 end
