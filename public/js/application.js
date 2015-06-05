@@ -62,4 +62,56 @@ $(document).ready(function() {
     });
   });
 
+  // Follow Event Listener
+  $('.follow-form').on('click', function(event) {
+    event.preventDefault();
+
+    var request = $.ajax({
+      method: 'POST',
+      url: $(this).attr('action'),
+      context: $(this)
+    });
+
+    request.done(function(response) {
+      // logging
+      console.log(response);
+      console.log("SUCCESS");
+
+      $(this).hide();
+      $(this).prev().show();
+    });
+
+    request.fail(function() {
+      // logging
+      console.log(response);
+      console.log("FAIL");
+    });
+  });
+
+  // Unfollow Event Listener
+  $('.unfollow-form').on('click', function(event) {
+    event.preventDefault();
+
+    var request = $.ajax({
+      method: 'DELETE',
+      url: $(this).attr('action'),
+      context: $(this)
+    });
+
+    request.done(function(response) {
+      // logging
+      console.log(response);
+      console.log('SUCCESS');
+
+      $(this).hide();
+      $(this).next().show();
+    });
+
+    request.fail(function(response) {
+      // logging
+      console.log(response);
+      console.log('FAIL');
+    });
+  });
+
 });

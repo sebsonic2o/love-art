@@ -1,0 +1,24 @@
+<% if !home %>
+    <% if !logged_in? %>
+      <form action='/lovers/login' method='get'>
+        <input type='submit' value='Follow'>
+      </form>
+    <% else %>
+      <% leader = current_lover.leaders.find_by(id: lover.id) %>
+      <% if leader %>
+        <form class='unfollow-form' action='/lovers/<%= lover.id %>/connections' method='post'>
+      <% else %>
+        <form class='unfollow-form inactive' action='/lovers/<%= lover.id %>/connections' method='post'>
+      <% end %>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Unfollow'>
+      </form>
+      <% if leader %>
+        <form class='follow-form inactive' action='/lovers/<%= lover.id %>/connections' method='post'>
+      <% else %>
+        <form class='follow-form' action='/lovers/<%= lover.id %>/connections' method='post'>
+      <% end %>
+        <input type='submit' value='Follow'>
+      </form>
+    <% end %>
+<% end %>

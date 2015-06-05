@@ -11,4 +11,10 @@ class Artwork < ActiveRecord::Base
   has_many :artwork_updates, dependent: :destroy
 
   belongs_to :artist
+
+  after_create :create_update
+
+  def create_update
+     self.artwork_updates.create(lover_id: self.artist.id)
+  end
 end

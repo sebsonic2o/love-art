@@ -1,0 +1,12 @@
+<section class='update'>
+  <h3>Your Art Feed</h3>
+  <form action='/updates' method='post'>
+    <textarea name='text' placeholder="What's new?"></textarea>
+    <input type='submit' value='Share'>
+  </form>
+  <section class='feeds'>
+    <% @feeds.each do |feed| %>
+      <%= erb :'updates/_feed', locals: {feed: feed} %>
+    <% end %>
+  </section>
+</section>

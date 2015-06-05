@@ -4,6 +4,7 @@
 <section class='profile'>
   <img src="<%= @lover.image_url %>">
   <h3><%= @lover.alias %></h3>
+  <%= erb :'lovers/_connection', locals: {home: @home, lover: @lover} %>
   <p><%= @lover.first_name %> <%= @lover.last_name %></p>
   <% unless @home || @lover.type.nil? %>
     <p><a href="/artists/<%= @lover.id %>/artworks">See Artwork</a></p>

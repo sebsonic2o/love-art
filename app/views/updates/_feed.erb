@@ -1,0 +1,10 @@
+<% if feed.type == 'LikeUpdate' %>
+  <div class='feed like-update'>
+<% elsif feed.type == 'ArtworkUpdate' %>
+  <div class='feed artwork-update'>
+<% else %>
+  <div class='feed custom-update'>
+<% end %>
+<a href="/lovers/<%= feed.lover.id %>"><h4><%= feed.lover.alias %></h4></a>
+<p><%= feed.text %></p>
+</div>

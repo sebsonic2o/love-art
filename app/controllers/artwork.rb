@@ -23,7 +23,7 @@ end
 
 post '/artworks' do
   if !current_artist.nil?
-    current_artist.artworks.create!(
+    artwork = current_artist.artworks.create!(
       title: params[:title],
       description: params[:description],
       image_url: params[:image_url],
