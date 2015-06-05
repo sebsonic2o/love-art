@@ -1,12 +1,12 @@
 <div>
-  <p>Likes: <span><%= artwork.likes.count %></span></p>
+  <p>Likes: <span><%= artwork.like_updates.count %></span></p>
   <% if !home %>
     <% if !logged_in? %>
       <form action='/lovers/login' method='get'>
         <input type='submit' value='Like'>
       </form>
     <% else %>
-      <% like = artwork.likes.find_by(lover_id: current_lover.id) %>
+      <% like = artwork.like_updates.find_by(lover_id: current_lover.id) %>
       <% if like %>
         <form class='unlike-form' action='/artworks/<%= artwork.id %>/likes' method='post'>
       <% else %>

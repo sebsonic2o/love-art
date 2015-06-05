@@ -4,7 +4,7 @@ class ArtworkUpdate < Update
 
   belongs_to :artwork
 
-  after_initialize :defaults
+  before_create :defaults
 
   def defaults
     self.lover = self.artwork.artist
