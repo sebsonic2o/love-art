@@ -2,11 +2,6 @@ get '/' do
   if current_lover.nil?
     erb :index
   else
-    # if current_artist.nil?
-    #   redirect '/artworks'
-    # else
-    #   redirect "/artists/#{current_artist.id}/artworks"
-    # end
     redirect "/updates"
   end
 end

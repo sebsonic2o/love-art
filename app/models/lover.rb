@@ -20,6 +20,8 @@ class Lover < ActiveRecord::Base
   has_many :interests, dependent: :destroy
   has_many :categories, through: :interests
 
+  scope :leader_for, ->(id) { find(id).leaders }
+
   def password
     @password ||= Password.new(password_hash)
   end

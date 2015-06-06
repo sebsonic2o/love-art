@@ -2,13 +2,7 @@ get '/updates' do
 
   if logged_in?
 
-    # feed includes my updates
-    # @feeds = Update.where("lover_id = ? ", current_lover.id) #.order("updated_at DESC")
-    @feeds = Update.for_artwork_of_lover(current_lover.id)
-    @feeds += Update.for_lover(current_lover.id) #.order("updated_at DESC")
-    # feed includes updates for my artwork
-
-    # feed includes updates from my leaders
+    @feeds = Update.get_all_for(current_lover.id)
 
     erb :'updates/index'
   else
