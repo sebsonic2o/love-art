@@ -10,13 +10,13 @@ This proof-of-concept was completed in four days as part of a personal side proj
 
 ## Show
 
-An artist can sign in or sign up to add his artwork.
+An artist signs in, or signs up to add his artwork.
 
 ![show](imgs/show.png)
 
 ## Love
 
-A user can browse artwork, and start showing his love after signing in or signing up.
+A user can browse artwork, and shows his love after signing in or signing up.
 
 ![love](imgs/love.png)
 
